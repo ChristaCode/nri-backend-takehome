@@ -31,25 +31,34 @@ function makeQuiz(n){ // where n is size of quiz
 
   console.log(questions);
 
-  let hm = new Map();
+  let strandHM = new Map();
+  let standardsHM = new Map();
+
   let length = questions.length;
   let currLevel = 1;
   let strandIndex = 0;
+  let standardsIndex = 0;
   let quizQuestions = [];
 
   let maxStrands = questions[length - 1][0];
-  // let maxStandards = questions[length - 1][2];
+  let maxStandards = questions[length - 1][2];
   quizQuestions[0] = questions[0][4];
 
 
   for(let i = 0; i < n; i++) {
-  	strandIndex = chooseIndex(hm, maxStrands);
-	hm.set(strandIndex, currLevel);
+  	strandIndex = chooseIndex(strandHM, maxStrands);
+	strandHM.set(strandIndex, currLevel);
+
+  	standardsIndex = chooseIndex(standardsHM, maxStandards);
+	standardsHM.set(standardsIndex, currLevel);
 
 	quizQuestions[i] = questions[strandIndex][4];
 
-	if(hm.size === maxStrands - 1)
-  		hm.clear();
+	if(strandHM.size === maxStrands - 1)
+  		strandHM.clear();
+
+  	if(standardsHM.size === maxStandards - 1)
+  		strandHM.clear();
 
 	}
 	
