@@ -31,57 +31,39 @@ function makeQuiz(n){ // where n is size of quiz
 
   console.log(questions);
 
-  // generate random number within out strata
-  // mark outer strata as counted 
-  // generate random number within inner strata
-  // mark inner strata as counted
-  // add question to array
-  // once all possible outer strata are accounted for, reset count of outer strata
-  // once all possible inner strata are acconted for, reset count of inner strata
-
-  // rand(2) => 1
-  // add 1 to countOuter hashmap
-  // add 1 to numCountOuter
-  // if numCountOuter = numOfOuter increment desired count by one
-  // rand(2) // if return value in countOuter run rand again
-
   let hm = new Map();
   let length = questions.length;
   let currLevel = 1;
   let strandIndex = 0;
+  let quizQuestions = [];
 
   let maxStrands = questions[length - 1][0];
   // let maxStandards = questions[length - 1][2];
+  quizQuestions[0] = questions[0][4];
 
 
-  for(let i = 0; i < 5; i++) {
-  	  if(!hm){
-	  	strandIndex = chooseIndex(hm, maxStrands);
-		hm.set(strandIndex, currLevel);
-  	  } else if(hm.size === maxStrands){
-	  	currLevel++;
-	  	hm = null;
-	  } else {
-	  	strandIndex = chooseIndex(hm, maxStrands);
-		hm.set(strandIndex, currLevel);
-	  }
+  for(let i = 0; i < n; i++) {
+  	strandIndex = chooseIndex(hm, maxStrands);
+	hm.set(strandIndex, currLevel);
 
+	quizQuestions[i] = questions[strandIndex][4];
 
-      console.log(hm);
-      console.log(hm.size);
-      console.log(maxStrands);
+	if(hm.size === maxStrands - 1)
+  		hm.clear();
 
 	}
-
-
-  //  [ '1', 'Nouns', '3', 'Proper Nouns', '6', '0.4' ],
-  //  [ '2', 'Verbs', '4', 'Action Verbs', '7', '0.9' ],
+	
+	console.log('result: ' + quizQuestions);
 
 }
 
 function chooseIndex(hm, maxStrands){
 	let foundIndex = false;
 	let strandIndex = 0;
+
+	if(!hm){
+		return Math.floor(Math.random()  * maxStrands + 1);
+	}
 
 	while(foundIndex != true){
 		strandIndex = Math.floor(Math.random()  * maxStrands + 1);
