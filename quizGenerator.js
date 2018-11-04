@@ -29,7 +29,6 @@ function makeQuiz(n){ // where n is size of quiz
 	if(n < 0)
 		return;
 
-  console.log(questions);
 
   let strandHM = new Map();
   let standardsHM = new Map();
@@ -52,7 +51,7 @@ function makeQuiz(n){ // where n is size of quiz
   	standardsIndex = chooseIndex(standardsHM, maxStandards);
 	standardsHM.set(standardsIndex, currLevel);
 
-	quizQuestions[i] = questions[strandIndex][4];
+	quizQuestions[i] = ['[strand: ' + strandIndex, 'standard: ' + standardsIndex + '] '];
 
 	if(strandHM.size === maxStrands - 1)
   		strandHM.clear();
