@@ -1,0 +1,22 @@
+{
+  "name": "nri-backend-takehome",
+  "version": "1.0.0",
+  "description": "One of our engineering challenges at NoRedInk is deciding how to show students the right mix of content in a performant manner.  By choosing the right cross-section of content we can ensure that:   1.  Students achieve content mastery in the least amount of time, and   2.  Students don't get bored with the same questions.",
+  "main": "quizGenerator.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChristaCode/nri-backend-takehome.git"
+  },
+  "author": "Christa Cooke",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChristaCode/nri-backend-takehome/issues"
+  },
+  "homepage": "https://github.com/ChristaCode/nri-backend-takehome#readme",
+  "dependencies": {
+    "fs": "0.0.1-security"
+  }
+}
